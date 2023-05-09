@@ -13,6 +13,9 @@ ConnectDb();
 app.use(morgan("dev"))
 app.use(express.json())
 
+//routes
+app.use("/api/v1/auth/",require("./routes/authRoute"));
+
 app.get("/",(req,res)=>{
     res.send({
         message:"server is running on 8080"
