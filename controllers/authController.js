@@ -2,7 +2,7 @@
  const hashPassword=require("../helpers/authHelper")
  const registerController =async (req,res)=>{
   try {
-    const {name,email,password,phone,address}=req.body()
+    const {name,email,password,phone,address}=req.body;
     if(!name){
         res.send({error:"name is required"})
     }
