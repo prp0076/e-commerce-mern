@@ -1,5 +1,5 @@
- const Usermodel=require("../models/Usermodel")
- const hashPassword=require("../helpers/authHelper")
+ const Usermodel = require("../models/Usermodel")
+ const hashPassword = require("../helpers/authHelper")
  const registerController =async (req,res)=>{
   try {
     const {name,email,password,phone,address}=req.body;
@@ -28,7 +28,7 @@
         })
     }
     //register user
-    const hashedpassword =await hashPassword(password);
+    const hashedpassword = await hashPassword(password);
     //save
     const user= new Usermodel({name,email,phone,address,password:hashedpassword}).save();
     res.status(201).send({
