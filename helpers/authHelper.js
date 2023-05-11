@@ -5,10 +5,11 @@ const hashPassword = async(password)=>{
         const hashedPassword = await bcrypt.hash(password,SaltRound);
         return hashedPassword;
     } catch (error) {
-        console.log(error)
+        console.log(error) 
     }
 }
 const  comparedPassword =(password,hashedPassword)=>{
     return bcrypt.compare(password,hashedPassword);
 }
+
 module.exports={hashPassword,comparedPassword}

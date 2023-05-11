@@ -1,36 +1,36 @@
  const Usermodel = require("../models/Usermodel")
  const hashPassword = require("../helpers/authHelper")
- const registerController =async (req,res)=>{
+ const registerController =async (req, res)=>{
   try {
     const {name,email,password,phone,address}=req.body;
     if(!name){
         res.send({error:"name is required"})
     }
     if(!email){
-        res.send({error:"email is required"})
+        res.send({message:"email is required"})
     }
     if(!password){
-        res.send({error:"password is required"})
+        res.send({message:"password is required"})
     }
     if(!phone){
-        res.send({error:"phone is required"})
+        res.send({message:"phone is required"})
     }
     if(!address){
-        res.send({error:"address is required"})
+        res.send({message:"address is required"})
     }
     //check user
-    const existinguser=Usermodel.findOne({email});
+    const existinguser=await Usermodel.findOne({email});
     //existing user
     if(existinguser){
         res.status(200).send({
-            success:true,
+            success:false,
             message:"already a user"
-        })
+        });
     }
     //register user
-    const hashedpassword = await hashPassword(password);
+    const hashedPassword = await hashPassword(password);
     //save
-    const user= new Usermodel({name,email,phone,address,password:hashedpassword}).save();
+    const user=await new Usermodel({name,email,phone,address,password:hashedPassword}).save();
     res.status(201).send({
         success:true,
         message:"User register successfully",
@@ -41,7 +41,7 @@
     console.log(error)
     res.status(500).send({
         success:false,
-        message:"Error in registration",
+        message:"Error in Registration",
         error
     })
   }

@@ -6,7 +6,7 @@ const UserSchema= new Schema({
         required:true,
         trim:true //remove whitespace
     },
-    email:{
+    email:{ 
         type:String,
         required:true,
         unique:true
