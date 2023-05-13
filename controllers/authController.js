@@ -1,5 +1,5 @@
  const Usermodel = require("../models/Usermodel")
- const hashPassword = require("../helpers/authHelper")
+ const {hashPassword} = require("../helpers/authHelper")
  const registerController =async (req, res)=>{
   try {
     const {name,email,password,phone,address}=req.body;
