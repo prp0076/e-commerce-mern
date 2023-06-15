@@ -3,6 +3,7 @@ import Layout from "../../Components/Layout"
 import toast from"react-hot-toast"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import "../../styles/AuthStyles.css"
 const Register = () => {
 const [name,setName]=useState("");
 const [email,setEmail]=useState("");
@@ -31,7 +32,7 @@ try {
 }
   return (
     <Layout title="Register -Ecommerce App">
-        <div className='register'>
+        <div className='form-container'>
            <h1>Register Page</h1>
            <form onSubmit={handleSubmit}>
                 <div className="mb-3">
