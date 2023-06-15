@@ -14,12 +14,12 @@ const Login = () => {
         const handleSubmit=async (e)=>{
         e.preventDefault();
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`,{email,password});
+            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/login`,{email,password});
             if( res && res?.data?.success){
                 
-                toast.success(res.data.message);
+                toast.success(res?.data?.message);
                 
-                navigate('/login')
+                navigate('/')
             }
             else{
                 toast.error(res.data.message)
