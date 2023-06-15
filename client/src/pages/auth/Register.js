@@ -50,7 +50,7 @@ try {
                 <div className="mb-3">
                     <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder='enter your password' required/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Register</button>
             </form> 
         </div>
     </Layout>
