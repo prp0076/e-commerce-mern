@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
-import {GiShoppingBag} from "react-icons/gi"
 import {BsShopWindow} from "react-icons/bs"
 function Header() {
   return (

@@ -5,7 +5,7 @@
   try {
     const {name,email,password,phone,address}=req.body;
     if(!name){
-        res.send({error:"name is required"})
+        res.send({message:"name is required"})
     }
     if(!email){
         res.send({message:"email is required"})
@@ -25,7 +25,7 @@
     if(existinguser){
         res.status(200).send({
             success:false,
-            message:"already a user"
+            message:"Already Register Please Login"
         });
     }
     //register user

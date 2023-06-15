@@ -3,7 +3,7 @@ import Layout from '../Components/Layout'
 
 function HomePage() {
   return (
-    <Layout>
+    <Layout title={'Best offers'}>
         <h1>HomePage</h1>
     </Layout>
   )
