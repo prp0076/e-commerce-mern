@@ -17,5 +17,8 @@ router.post('/login',loginController);
 //test route
 router.get('/test',requireSignIn,IsAdmin,testController);
 
-
+//protected route
+router.get('/user-auth',requireSignIn,(req,res)=>{
+   res.status(200).send({ ok:true}); 
+})
 module.exports= router
