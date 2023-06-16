@@ -13,7 +13,7 @@ const Forgotpassword = () => {
         const handleSubmit=async (e)=>{
         e.preventDefault();
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/forgot-password`,{email,newpassword,answer});
+            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/forgot-password`,{email,answer,newpassword});
             if( res && res?.data?.success){
                 toast.success(res?.data?.message);
                 navigate('/login');
@@ -40,7 +40,7 @@ const Forgotpassword = () => {
             </div>
            
             <div className="mb-3">
-                <input type="password" value={newpassword} onChange={(e)=>setNewPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder='enter new password' required/>
+                <input type="password" value={newpassword} onChange={(e)=>setNewPassword(e.target.value)} className="form-control" id="exampleInputnewPassword1" placeholder='enter new password' required/>
             </div>
            
             <button type="submit" className="btn btn-primary">Reset</button>

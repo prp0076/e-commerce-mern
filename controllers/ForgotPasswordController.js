@@ -1,16 +1,17 @@
 const  Usermodel =require('../models/Usermodel');
-const hashPassword = require('../helpers/authHelper');
+const {hashPassword} = require('../helpers/authHelper');
 
 const ForgotPasswordController = async (req,res) => {
  try {
-    const {email,answer,newPassword}=req.body
+    // console.log(req,res)
+    const {email,answer,newpassword}=req.body
     if(!email){
         res.status(400).send({message:"Email is required"});
     }
     if(!answer){
         res.status(400).send({message:"answer is required"});
     }
-    if(!newPassword){
+    if(!newpassword){
         res.status(400).send({message:"newPassword is required"});
     }
 
@@ -25,7 +26,7 @@ const ForgotPasswordController = async (req,res) => {
         })
     }
 
-    const hashedPassword = await hashPassword(newPassword)
+    const hashedPassword = await hashPassword(newpassword)
     await Usermodel.findByIdAndUpdate(user._id,{password:hashedPassword})
     res.status(200).send({
         success:true,
@@ -41,4 +42,4 @@ const ForgotPasswordController = async (req,res) => {
  }
 }
 
-module.exports=ForgotPasswordController
+module.exports = ForgotPasswordController
