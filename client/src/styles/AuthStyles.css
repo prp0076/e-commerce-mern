@@ -1,5 +1,5 @@
 .form-container{
-    height: 450px;
+    height: 475px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,8 +25,10 @@
     /* color: white; */
     width: 250px;
 }
-.form-container form button:hover{
+.form-container form button{
     border: 1px solid black;
+    width: 250px;
+
     background: #000000;
     background: -webkit-linear-gradient(
         to right,

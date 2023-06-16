@@ -3,7 +3,7 @@
  const {hashPassword} = require("../helpers/authHelper")
  const registerController =async (req, res)=>{
   try {
-    const {name,email,password,phone,address}=req.body;
+    const {name,email,password,phone,address,answer}=req.body;
     if(!name){
         res.send({message:"name is required"})
     }
@@ -19,6 +19,9 @@
     if(!address){
         res.send({message:"address is required"})
     }
+    if(!answer){
+        res.send({message:"answer is required"})
+    }
     //check user
     const existinguser=await Usermodel.findOne({email});
     //existing user
@@ -31,7 +34,7 @@
     //register user
     const hashedPassword = await hashPassword(password);
     //save
-    const user=await new Usermodel({name,email,phone,address,password:hashedPassword}).save();
+    const user=await new Usermodel({name,email,phone,address,password:hashedPassword,answer}).save();
     res.status(201).send({
         success:true,
         message:"User register successfully",

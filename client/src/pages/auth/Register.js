@@ -10,12 +10,13 @@ const [email,setEmail]=useState("");
 const [password,setPassword]=useState("");
 const [phone,setPhone]=useState("");
 const [address,setAddress]=useState("");
+const [answer,setAnswer]=useState("");
 const navigate=useNavigate();
 // handle submit
 const handleSubmit=async (e)=>{
 e.preventDefault();
 try {
-    const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`,{name,email,password,phone,address});
+    const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`,{name,email,password,phone,address,answer});
     if( res && res?.data?.success){
         
         toast.success(res.data.message);
@@ -49,6 +50,9 @@ try {
                 </div>
                 <div className="mb-3">
                     <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder='enter your password' required/>
+                </div>
+                <div className="mb-3">
+                    <input type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder='what is your fevorite sports' required/>
                 </div>
                 <button type="submit" className="btn btn-primary">Register</button>
             </form> 
