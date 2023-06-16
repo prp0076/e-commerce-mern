@@ -36,7 +36,7 @@ const Forgotpassword = () => {
                 <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control" id="exampleInputEmail" placeholder='enter your email' required/>
             </div>
             <div className="mb-3">
-                <input type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)} className="form-control" id="exampleInputEmail" placeholder='enter your fevourite sports' required/>
+                <input type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)} className="form-control" id="exampleInputAnswer" placeholder='enter your fevourite sports' required/>
             </div>
            
             <div className="mb-3">
