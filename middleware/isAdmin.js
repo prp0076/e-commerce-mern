@@ -3,7 +3,7 @@ const IsAdmin= async(req,res,next)=>{
     try {
         const user = await userModel.findById(req.user._id);
         if(user.role !== 1){
-            console.log("aunathorized access");
+            console.log("unathorized access");
         }
         else{
             next();
