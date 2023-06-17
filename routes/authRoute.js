@@ -18,8 +18,12 @@ router.post('/login',loginController);
 //test route
 router.get('/test',requireSignIn,IsAdmin,testController);
 
-//protected route
+//protected route 
 router.get('/user-auth',requireSignIn,(req,res)=>{
+   res.status(200).send({ ok:true}); 
+})
+//protected route fro admin
+router.get('/admin-auth',requireSignIn,IsAdmin,(req,res)=>{
    res.status(200).send({ ok:true}); 
 })
 

@@ -32,7 +32,7 @@ function Header() {
           <NavLink to="/category" className="nav-link "  >Category</NavLink>
         </li>
         <li className='nav-item'>
-         <NavLink to='/dashboard' className='nav-link'>Dashboard</NavLink>
+         <NavLink to={`/dashboard/${auth?.user?.role === 1 ? "admin":"user"}`} className='nav-link'>Dashboard</NavLink>
         </li>
         {
           !auth.user ? (<>
