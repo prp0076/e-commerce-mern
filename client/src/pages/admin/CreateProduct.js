@@ -4,7 +4,8 @@ import AdminMenu from '../../Components/AdminMenu'
 
 const CreateProduct = () => {
   return (
-    <Layout>
+    <Layout title="Create Products">
+        <div className='container-fluid m-3 p-3'>
         <div className='row'>
             <div className='col-md-3'>
                 <AdminMenu/>
@@ -13,7 +14,7 @@ const CreateProduct = () => {
             <h1>CreateProduct</h1>
             </div>
         </div>
-        
+        </div>
     </Layout>
   )
 }

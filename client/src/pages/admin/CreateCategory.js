@@ -4,7 +4,8 @@ import AdminMenu from '../../Components/AdminMenu'
 
 const CreateCategory = () => {
   return (
-    <Layout>
+    <Layout title="Create Category">
+        <div className='container-fluid m-3 p-3'>
         <div className='row'>
             <div className='col-md-3'>
                 <AdminMenu/>
@@ -13,7 +14,7 @@ const CreateCategory = () => {
             <h1>CreateCategory</h1>
             </div>
         </div>
-        
+        </div>
     </Layout>
   )
 }
