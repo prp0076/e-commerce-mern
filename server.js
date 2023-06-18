@@ -6,7 +6,6 @@ const morgan = require("morgan");
 const ConnectDb = require("./config/db");
 const cors = require("cors");
 
-
 //config
 dotenv.config()
 ConnectDb();
@@ -18,6 +17,7 @@ app.use(express.json())
 
 //routes
 app.use("/api/v1/auth/",require("./routes/authRoute"));
+app.use("/api/v1/category/",require('./routes/CategoryRoutes'));
 
 app.get("/",(req,res)=>{
     res.send({
