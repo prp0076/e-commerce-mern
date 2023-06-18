@@ -18,6 +18,7 @@ app.use(express.json())
 //routes
 app.use("/api/v1/auth/",require("./routes/authRoute"));
 app.use("/api/v1/category/",require('./routes/CategoryRoutes'));
+app.use("/api/v1/product/",require('./routes/productRoutes'));
 
 app.get("/",(req,res)=>{
     res.send({
