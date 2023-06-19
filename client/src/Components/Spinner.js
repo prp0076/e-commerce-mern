@@ -1,5 +1,5 @@
 import React ,{useState,useEffect}from "react";
-import { useFetcher, useNavigate,useLocation } from "react-router-dom";
+import {  useNavigate,useLocation } from "react-router-dom";
 const Spinner = ({path="login"}) => {
   const [count,setCount]=useState(5);
   const navigate=useNavigate();

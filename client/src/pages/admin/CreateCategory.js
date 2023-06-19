@@ -47,6 +47,7 @@ const CreateCategory = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
+  //update
   const handleUpdate = async(e)=>{
     e.preventDefault();
   try {
@@ -56,6 +57,22 @@ const CreateCategory = () => {
       setSelected(null);
       setUpdateName("");
       setVisible(false)
+      getAllCategory();
+    }
+    else{
+     toast.error(data.message)
+    }
+  } catch (error) {
+    console.log(error)
+    toast.error("something went wrong while updating category")
+  }
+  }
+  //delete
+  const handleDelete = async(cid)=>{
+  try {
+    const {data}= await axios.delete(`http://localhost:8080/api/v1/category/delete-category/${cid}`);
+    if(data.success){
+      toast.success(`Deleted`);
       getAllCategory();
     }
     else{
@@ -99,7 +116,7 @@ const CreateCategory = () => {
                    </td>
                    <td >
                     <button className='btn btn-primary ms-2' onClick={()=>{setVisible(true); setUpdateName(c.name);setSelected(c)}}>EDIT</button>
-                    <button className='btn btn-danger ms-2'>DELETE</button>
+                    <button className='btn btn-danger ms-2' onClick={()=>{handleDelete(c._id)}}>DELETE</button>
                    </td>
                    </tr>
                   </> 

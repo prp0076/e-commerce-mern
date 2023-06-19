@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import {BsShopWindow} from "react-icons/bs"
 import { useAuth } from '../auth/Context'
-import { Toast, toast } from 'react-hot-toast'
+import {toast } from 'react-hot-toast'
 function Header() {
   const [auth,setAuth]=useAuth();
   const handleLogout=()=>{
