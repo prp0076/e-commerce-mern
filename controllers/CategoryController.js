@@ -60,11 +60,11 @@ const CategoryController = async (req,res)=>{
         res.status(200).send({
             success:true,
             message:"successfully get all category",
-            category
+            category,
         })
     } catch (error) {
         console.log(error);
-    res.status(500).send({
+        res.status(500).send({
         success:false,
         error,
         message:"Error in getting all category"
