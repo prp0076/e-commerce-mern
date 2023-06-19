@@ -26,14 +26,14 @@ const UpdateProduct = () => {
       const { data } = await axios.get(
         `http://localhost:8080/api/v1/product/get-product/${params.slug}`
       );
-      setName(data.product.name);
-      setId(data.product._id);
-      setDescription(data.product.description);
-      setPrice(data.product.price);
-      setPrice(data.product.price);
-      setQuantity(data.product.quantity);
-      setShipping(data.product.shipping);
-      setCategory(data.product.category._id);
+      setName(data?.product?.name);
+      setId(data?.product?._id);
+      setDescription(data?.product?.description);
+      setPrice(data?.product?.price);
+      setPrice(data?.product?.price);
+      setQuantity(data?.product?.quantity);
+      setShipping(data?.product?.shipping);
+      setCategory(data?.product?.category?._id);
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +45,7 @@ const UpdateProduct = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8080/api/v1/category/get-category");
+      const { data } = await axios.get("http://localhost:8080/api/v1/category/get-allcategory");
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -71,14 +71,14 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
-        `http:localhost:8080/api/v1/product/update-product/${id}`,
+        `http://localhost:8080/api/v1/product/update-product/${id}`,
         productData
       );
       if (data?.success) {
         toast.error(data?.message);
       } else {
         toast.success("Product Updated Successfully");
-        navigate("/dashboard/admin/products");
+        navigate("/dashboard/admin/products");//route 
       }
     } catch (error) {
       console.log(error);
@@ -153,7 +153,7 @@ const UpdateProduct = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`http:localhost:8080/api/v1/product/product-photo/${id}`}
+                      src={`http://localhost:8080/api/v1/product/product-photo/${id}`}
                       alt="product_photo"
                       height={"200px"}
                       className="img img-responsive"
