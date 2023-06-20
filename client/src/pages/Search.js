@@ -13,7 +13,7 @@ const Search = () => {
               ? "No Products Found"
               : `Found ${values?.results.length}`}
           </h6>
-          <div className="d-flex flex-wrap mt-4">
+        <div className="d-flex flex-wrap mt-4">
             {values?.results.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
@@ -32,7 +32,7 @@ const Search = () => {
                 </div>
               </div>
             ))}
-          </div>
+        </div>
         </div>
       </div>
     </Layout>
