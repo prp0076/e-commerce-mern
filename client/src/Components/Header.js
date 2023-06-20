@@ -3,6 +3,7 @@ import { NavLink,Link } from 'react-router-dom'
 import {BsShopWindow} from "react-icons/bs"
 import { useAuth } from '../auth/Context'
 import {toast } from 'react-hot-toast'
+import SearchInput from './Form/SearchInput'
 function Header() {
   const [auth,setAuth]=useAuth();
   const handleLogout=()=>{
@@ -24,10 +25,13 @@ function Header() {
     </button>
     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
       <Link to="/" className="navbar-brand" ><BsShopWindow></BsShopWindow> E-COMMERCE APP</Link>
+      
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+      <SearchInput></SearchInput>
         <li className="nav-item">
           <NavLink to="/" className="nav-link "  >Home</NavLink>
         </li>
+         
         <li className="nav-item">
           <NavLink to="/category" className="nav-link "  >Category</NavLink>
         </li>

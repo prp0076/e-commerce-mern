@@ -18,11 +18,13 @@ import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
 import Products from "./pages/admin/Products";
 import UpdateProduct from "./pages/admin/UpdateProduct";
+import Search from "./pages/Search";
 function App() {
   return (
     <>
     <Routes>
       <Route path="/" element={<HomePage></HomePage>}></Route>
+      <Route path="/search" element={<Search></Search>}></Route>
       <Route path="/about" element={<About></About>}></Route>
       <Route path="/dashboard" element={<PrivateRoute/>}>
         <Route path="user" element={<Dashboard/>}></Route>
