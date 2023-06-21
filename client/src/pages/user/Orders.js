@@ -10,7 +10,9 @@ const Orders = () => {
   const [auth, setAuth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8080/api/v1/auth/orders");
+      const { data } = await axios.get(
+        "http://localhost:8080/api/v1/auth/orders"
+      );
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -22,7 +24,7 @@ const Orders = () => {
   }, [auth?.token]);
   return (
     <Layout title={"Your Orders"}>
-      <div className="container-flui p-3 m-3 dashboard">
+      <div className="container-flui p-3 dashboard">
         <div className="row">
           <div className="col-md-3">
             <UserMenu />
@@ -35,7 +37,7 @@ const Orders = () => {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Status</th>
                         <th scope="col">Buyer</th>
                         <th scope="col"> date</th>

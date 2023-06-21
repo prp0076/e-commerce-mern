@@ -1,11 +1,11 @@
-import React ,{useState,useEffect}from 'react'
-import Layout from '../../Components/Layout'
-import AdminMenu from '../../Components/AdminMenu'
-import { useFetcher, useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { toast } from 'react-hot-toast'
-import {Select} from "antd"
-const  {Option} = Select
+import React, { useState, useEffect } from "react";
+import Layout from "../../Components/Layout";
+import AdminMenu from "../../Components/AdminMenu";
+import { useFetcher, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { Select } from "antd";
+const { Option } = Select;
 const CreateProduct = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -18,27 +18,29 @@ const CreateProduct = () => {
   const [photo, setPhoto] = useState("");
 
   //get all category
-  console.log(categories)
-  console.log(category)
-  const getAllCategory= async()=>{
+  console.log(categories);
+  console.log(category);
+  const getAllCategory = async () => {
     try {
-      const {data}= await axios.get('http://localhost:8080/api/v1/category/get-allcategory')
-      console.log(data.category)
+      const { data } = await axios.get(
+        "http://localhost:8080/api/v1/category/get-allcategory"
+      );
+      console.log(data.category);
       // console.log(data.categories)
-      if(data?.success){
-      setCategories(data?.category)
-    }
+      if (data?.success) {
+        setCategories(data?.category);
+      }
     } catch (error) {
-      console.log(error)
-      toast.error("Something went wrong in getting category")
+      console.log(error);
+      toast.error("Something went wrong in getting category");
     }
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     getAllCategory();
-  },[])
+  }, []);
 
   //create product function
-  const handleCreate=(e)=>{
+  const handleCreate = (e) => {
     e.preventDefault();
     try {
       const productData = new FormData();
@@ -62,23 +64,32 @@ const CreateProduct = () => {
       console.log(error);
       toast.error("something went wrong");
     }
-  }
+  };
   return (
-    <Layout title="Create Products">
-        <div className='container-fluid m-3 p-3'>
-        <div className='row'>
-            <div className='col-md-3'>
-                <AdminMenu/>
-            </div>
-            <div className='col-md-9'>
+    <Layout title=" Dashboard - Create Products">
+      <div className="container-fluid m-3 p-3 dashboard">
+        <div className="row">
+          <div className="col-md-3">
+            <AdminMenu />
+          </div>
+          <div className="col-md-9">
             <h1>CreateProduct</h1>
-            <div className='m1 w-75'>
-              <Select bordered={false} placeholder="select a category" size='large' showSearch 
-              className='form-select mb-3' onChange={(value)=>{setCategory(value)}}>
-                {categories?.map(c=>(
-                  <Option key={c._id} value={c._id}>{c.name}</Option>
+            <div className="m1 w-75">
+              <Select
+                bordered={false}
+                placeholder="select a category"
+                size="large"
+                showSearch
+                className="form-select mb-3"
+                onChange={(value) => {
+                  setCategory(value);
+                }}
+              >
+                {categories?.map((c) => (
+                  <Option key={c._id} value={c._id}>
+                    {c.name}
+                  </Option>
                 ))}
-
               </Select>
               <div className="mb-3">
                 <label className="btn btn-outline-secondary col-md-12">
@@ -96,7 +107,7 @@ const CreateProduct = () => {
                 {photo && (
                   <div className="text-center">
                     <img
-                      src={URL.createObjectURL(photo)}//browser property
+                      src={URL.createObjectURL(photo)} //browser property
                       alt="product_photo"
                       height={"200px"}
                       className="img img-responsive"
@@ -104,8 +115,15 @@ const CreateProduct = () => {
                   </div>
                 )}
               </div>
-              <div className='mb-3'>
-                <input type='text' placeholder='write a name' className='form-control' onChange={(e)=>{setName(e.target.value)}}></input>
+              <div className="mb-3">
+                <input
+                  type="text"
+                  placeholder="write a name"
+                  className="form-control"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                ></input>
               </div>
               <div className="mb-3">
                 <input
@@ -147,19 +165,19 @@ const CreateProduct = () => {
                 >
                   <Option value="0">No</Option>
                   <Option value="1">Yes</Option>
-                  </Select>
-              </div> 
+                </Select>
+              </div>
               <div className="mb-3">
                 <button className="btn btn-primary" onClick={handleCreate}>
                   CREATE PRODUCT
                 </button>
               </div>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default CreateProduct
+export default CreateProduct;

@@ -10,7 +10,9 @@ const Products = () => {
   //getall products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8080/api/v1/product/get-product");
+      const { data } = await axios.get(
+        "http://localhost:8080/api/v1/product/get-product"
+      );
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -24,13 +26,13 @@ const Products = () => {
   }, []);
   return (
     <Layout>
-      <div className="row">
+      <div className="row dashboard">
         <div className="col-md-3">
           <AdminMenu />
         </div>
         <div className="col-md-9 ">
           <h1 className="text-center">All Products List</h1>
-          <div className="d-flex">
+          <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <Link
                 key={p._id}

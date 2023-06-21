@@ -45,7 +45,9 @@ const UpdateProduct = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8080/api/v1/category/get-allcategory");
+      const { data } = await axios.get(
+        "http://localhost:8080/api/v1/category/get-allcategory"
+      );
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -78,7 +80,7 @@ const UpdateProduct = () => {
         toast.error(data?.message);
       } else {
         toast.success("Product Updated Successfully");
-        navigate("/dashboard/admin/products");//route 
+        navigate("/dashboard/admin/products"); //route
       }
     } catch (error) {
       console.log(error);

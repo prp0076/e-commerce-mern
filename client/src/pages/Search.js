@@ -13,7 +13,7 @@ const Search = () => {
               ? "No Products Found"
               : `Found ${values?.results.length}`}
           </h6>
-        <div className="d-flex flex-wrap mt-4">
+          <div className="d-flex flex-wrap mt-4">
             {values?.results.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
@@ -28,11 +28,13 @@ const Search = () => {
                   </p>
                   <p className="card-text"> $ {p.price}</p>
                   <button className="btn btn-primary ms-1">More Details</button>
-                  <button className="btn btn-secondary ms-1">ADD TO CART</button>
+                  <button className="btn btn-secondary ms-1">
+                    ADD TO CART
+                  </button>
                 </div>
               </div>
             ))}
-        </div>
+          </div>
         </div>
       </div>
     </Layout>

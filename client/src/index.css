@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Playfair+Display:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
+
 *{
   margin: 0;
   padding: 0;
@@ -14,12 +14,12 @@
   text-transform: uppercase;
   box-shadow: 0px 8px 6px -6px grey;
   --webkit-box-shadow: 0px 8px 6px -6px grey;
-  border-bottom: 0.3px solid gray !important;
+  border-bottom:  solid gray !important;
 }
 .nav-link{
   font-weight: 300 !important;
 }
-.nav-link:active{
+.active{
   border-bottom: 2px solid black;
 }
 .navbar-brand{
@@ -27,7 +27,19 @@
   font-family: "roboto",sans-serif;
   letter-spacing: 3px;
 }
-
+.search-form {
+  margin-right: 10px;
+  margin-top: 4px;
+}
+.search-form input {
+  border: none;
+  border-radius: 0;
+}
+.search-form button {
+  background-color: #000000;
+  border-radius: 0;
+  color: white;
+}
 /* footer */
 .footer{
   color: white;
@@ -94,4 +106,26 @@
 .product-link {
   text-decoration: none !important;
   color: black !important;
+}
+.cat-btn {
+  padding: 40px 0px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.ct-btn:hover {
+  background-color: #434343;
+  color:white;
+}
+/* ================
+====dashboard
+=================== */
+
+.dashboard {
+  margin-top: 100px !important;
+}
+
+.dashboard-menu h4 {
+  background-color: #434343 !important;
+  color: white;
+  padding: 30px 0px;
 }

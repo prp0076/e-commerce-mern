@@ -1,20 +1,28 @@
-import React from 'react'
-import {NavLink} from "react-router-dom"
+import React from "react";
+import { NavLink } from "react-router-dom";
 const UserMenu = () => {
   return (
     <>
-    <div className='text-center'>
+      <div className="text-center dashboard-menu">
         <div className="list-group">
-            <h4>Dashboard</h4>
-        <NavLink to="/dashboard/user/profile" className="list-group-item list-group-item-action active" aria-current="true">
+          <h4>Dashboard</h4>
+          <NavLink
+            to="/dashboard/user/profile"
+            className="list-group-item list-group-item-action "
+            aria-current="true"
+          >
             Profile
-        </NavLink>
-        <NavLink to="/dashboard/user/orders" className="list-group-item list-group-item-action">Orders</NavLink>
+          </NavLink>
+          <NavLink
+            to="/dashboard/user/orders"
+            className="list-group-item list-group-item-action"
+          >
+            Orders
+          </NavLink>
         </div>
-    </div>
-    
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default UserMenu
+export default UserMenu;
