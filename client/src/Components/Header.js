@@ -4,8 +4,13 @@ import {BsShopWindow} from "react-icons/bs"
 import { useAuth } from '../auth/Context'
 import {toast } from 'react-hot-toast'
 import SearchInput from './Form/SearchInput'
+import useCategory from '../hooks/useCategory'
+import { useCart } from '../auth/cart'
+import {Badge} from "antd"
 function Header() {
   const [auth,setAuth]=useAuth();
+  const categories = useCategory();
+  const [cart]=useCart();
   const handleLogout=()=>{
     setAuth({
       ...auth,
@@ -31,10 +36,35 @@ function Header() {
         <li className="nav-item">
           <NavLink to="/" className="nav-link "  >Home</NavLink>
         </li>
-         
-        <li className="nav-item">
+        <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to={"/categories"}
+                  data-bs-toggle="dropdown"
+                >
+                  Categories
+                </Link>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to={"/categories"}>
+                      All Categories
+                    </Link>
+                  </li>
+                  {categories?.map((c) => (
+                    <li>
+                      <Link
+                        className="dropdown-item"
+                        to={`/category/${c.slug}`}
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+        {/* <li className="nav-item">
           <NavLink to="/category" className="nav-link "  >Category</NavLink>
-        </li>
+        </li> */}
         <li className='nav-item'>
          <NavLink to={`/dashboard/${auth?.user?.role === 1 ? "admin":"user"}`} className='nav-link'>Dashboard</NavLink>
         </li>
@@ -52,8 +82,12 @@ function Header() {
               </li>
           </>)
         }
-        <li className="nav-item">
-          <NavLink to="/cart" className="nav-link" >Cart(0)</NavLink>
+        <li className="nav-item mt-1">
+                <Badge count={cart?.length} showZero>
+                  <NavLink to="/cart" className="nav-link">
+                    CART
+                  </NavLink>
+                </Badge>
         </li>
         
       </ul>

@@ -7,14 +7,17 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom"
 import { AuthProvider } from './auth/Context';
 import { SearchProvider } from './auth/Search';
+import { CartProvider } from './auth/cart';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   <AuthProvider>
     <SearchProvider>
-      <BrowserRouter>
-      <App></App>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+        <App></App>
+        </BrowserRouter>
+      </CartProvider> 
     </SearchProvider>
   </AuthProvider>
   

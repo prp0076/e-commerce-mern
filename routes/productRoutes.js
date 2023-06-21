@@ -9,7 +9,11 @@ const {
   productFilterController,
   productCountController,
   productListController,
-  searchProductController
+  searchProductController,
+  realtedProductController,
+  productCategoryController,
+  brainTreePaymentController,
+  brainTreeTokenController
 } =require("../controllers/productController");
 const requireSignIn  =require("../middleware/authMiddleware.js");
 const isAdmin = require("../middleware/isAdmin.js")
@@ -57,4 +61,21 @@ router.get('/product-list/:page',productListController)
 
 //search bar
 router.get('/search/:keyword',searchProductController);
+
+//similar product
+router.get('/related-product/:pid/:cid',realtedProductController)
+
+//category wise product
+router.get('/product-category/:slug',productCategoryController)
+
+
+//payment routes
+
+//token
+router.get('/braintree/token',brainTreeTokenController)
+
+//peyments
+router.post('/braintree/payment',requireSignIn,brainTreePaymentController)
+
+
 module.exports= router;

@@ -1,6 +1,19 @@
 const ProductsModel = require("../models/ProductsModel");
+const categoryModel = require("../models/CategoryModel")
 const fs = require("fs");
 const slugify = require("slugify");
+const braintree =require("braintree")
+const OrderModel = require("../models/OrderModel")
+const dotenv =require("dotenv")
+dotenv.config();
+//payment gateway
+var gateway = new braintree.BraintreeGateway({
+  environment: braintree.Environment.Sandbox,
+  merchantId: process.env.BRAINTREE_MERCHANT_ID,
+  publicKey: process.env.BRAINTREE_PUCLIC_KEY,
+  privateKey: process.env.BRAINTREE_PRIVATE_KEY,
+});
+
 
 const createProductController = async (req, res) => {
   try {
@@ -256,5 +269,98 @@ const searchProductController =async(req,res)=>{
     });
   }
 }
-module.exports={createProductController,getProductController,getSingleProductController,deleteProductController,updateProductController,productPhotoController,productFilterController,productCountController,productListController
-,searchProductController}
+const realtedProductController = async(req,res)=>{
+  try {
+    const { pid, cid } = req.params;
+    const products = await ProductsModel
+      .find({
+        category: cid,
+        _id: { $ne: pid },//not included
+      })
+      .select("-photo")
+      .limit(3)
+      .populate("category");
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "error while geting related product",
+      error,
+    });
+  }
+}
+const productCategoryController = async(req,res)=>{
+  try {
+    const category = await categoryModel.findOne({ slug: req.params.slug });
+    const products = await ProductsModel.find({ category }).populate("category");
+    res.status(200).send({
+      success: true,
+      category,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      error,
+      message: "Error While Getting products",
+    });
+  }
+}
+
+//payment
+//payment gateway api
+//token
+const brainTreeTokenController = async (req, res) => {
+  try {
+    gateway.clientToken.generate({}, function (err, response) {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send(response);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+const brainTreePaymentController = async (req, res) => {
+  try {
+    const { nonce, cart } = req.body;
+    let total = 0;
+    cart.map((i) => {
+      total += i.price;
+    });
+    let newTransaction = gateway.transaction.sale(
+      {
+        amount: total,
+        paymentMethodNonce: nonce,
+        options: {
+          submitForSettlement: true,
+        },
+      },
+      function (error, result) {
+        if (result) {
+          const order = new OrderModel({
+            products: cart,
+            payment: result,
+            buyer: req.user._id,
+          }).save();
+          res.json({ ok: true });
+        } else {
+          res.status(500).send(error);
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+module.exports={createProductController,getProductController,getSingleProductController,
+  deleteProductController,updateProductController,productPhotoController,
+  productFilterController,productCountController,productListController
+,searchProductController,realtedProductController,productCategoryController,brainTreePaymentController,brainTreeTokenController}
