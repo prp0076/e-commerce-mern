@@ -18,14 +18,14 @@ const CreateProduct = () => {
   const [photo, setPhoto] = useState("");
 
   //get all category
-  console.log(categories);
-  console.log(category);
+  // console.log(categories);
+  // console.log(category);
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
         "http://localhost:8080/api/v1/category/get-allcategory"
       );
-      console.log(data.category);
+      // console.log(data.category);
       // console.log(data.categories)
       if (data?.success) {
         setCategories(data?.category);

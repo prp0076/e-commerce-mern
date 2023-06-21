@@ -18,7 +18,7 @@ const CreateCategory = () => {
         "http://localhost:8080/api/v1/category/create-category",
         { name }
       );
-      console.log(data);
+      // console.log(data);
       if (data?.success) {
         toast.success(`${name} is created`);
         getAllCategory();
@@ -36,7 +36,7 @@ const CreateCategory = () => {
       const { data } = await axios.get(
         "http://localhost:8080/api/v1/category/get-allcategory"
       );
-      console.log(data.category);
+      // console.log(data.category);
       // console.log(data.categories)
       if (data.success) {
         setCategories(data.category);
