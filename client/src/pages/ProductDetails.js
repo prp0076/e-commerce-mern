@@ -46,7 +46,8 @@ const ProductDetails = () => {
             className="card-img-top"
             alt={product.name}
             height={"300px"}
-            width={"300px"}
+            style={{width:"400px",marginLeft:"50px"}}
+            
           />
         </div>
         <div className="col-md-6 product-details-info">
