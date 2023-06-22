@@ -105,7 +105,7 @@ const CartPage = () => {
                       src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
-                      width="100%"
+                      width={"130px"}
                       height={"130px"}
                     />
                   </div>
