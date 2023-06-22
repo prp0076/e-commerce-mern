@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
     "morgan": "^1.10.0",
+    "node-modules": "^1.0.1",
     "nodemon": "^2.0.22",
     "react-hot-toast": "^2.4.1",
     "slugify": "^1.6.6"
