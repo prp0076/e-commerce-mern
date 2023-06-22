@@ -27,7 +27,7 @@ app.use("/api/v1/product/",require('./routes/productRoutes'));
 //     })
 // //  console.log(`server is running on ${PORT}`);
 // })
-app.use("*",function(){
+app.use("*",function(req,res){
     res.sendFile(path.join(__dirname,"./client/build/index.html"));
 })
 app.listen(PORT,()=>{
