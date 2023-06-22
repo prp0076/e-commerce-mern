@@ -15,7 +15,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/category/create-category",
+        "/api/v1/category/create-category",
         { name }
       );
       // console.log(data);
@@ -34,7 +34,7 @@ const CreateCategory = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/category/get-allcategory"
+        "/api/v1/category/get-allcategory"
       );
       // console.log(data.category);
       // console.log(data.categories)
@@ -57,7 +57,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `http://localhost:8080/api/v1/category/update-category/${selected._id}`,
+        `/api/v1/category/update-category/${selected._id}`,
         { name: updateName }
       );
       if (data.success) {
@@ -78,7 +78,7 @@ const CreateCategory = () => {
   const handleDelete = async (cid) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8080/api/v1/category/delete-category/${cid}`
+        `/api/v1/category/delete-category/${cid}`
       );
       if (data.success) {
         toast.success(`Deleted`);
