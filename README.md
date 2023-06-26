@@ -30,14 +30,14 @@ To get started with the website, you will need to first clone this repository:
 Once you have cloned the repository, navigate to the project directory and install the dependencies:
 
 
- ``` cd ecommerce-mern/client  ```  
+ ``` cd e-commerce-mern/client  ```  
  ``` npm install ``` 
 
 
 After the dependencies have been installed, you can start the development server by running:
 
  ``` npm start ``` 
-This will start the development server at  ``` http://localhost:3000/  ``` , allowing you to view the website in your browser.
+This will start the development server at  ``` http://localhost:3000/  ```, allowing you to view the website in your browser.
 
 
 ## Contributing
