@@ -10,7 +10,7 @@ const path = require("path")
 dotenv.config()
 ConnectDb();
 
-//middlewares
+//middlewares 
 app.use(cors())
 app.use(morgan("dev"))
 app.use(express.json())

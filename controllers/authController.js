@@ -2,7 +2,7 @@
  const JWT= require("jsonwebtoken")
  const {hashPassword} = require("../helpers/authHelper")
  const orderModel =require("../models/OrderModel")
- const registerController =async (req, res)=>{
+ const  registerController =async (req, res)=>{
   try {
     const {name,email,password,phone,address,answer}=req.body;
     if(!name){

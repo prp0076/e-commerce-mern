@@ -8,7 +8,7 @@ const CartProvider = ({ children }) => {
     let existingCartItem = localStorage.getItem("cart");
     if (existingCartItem) setCart(JSON.parse(existingCartItem));
   }, []);
-
+  // console.log(cart);
   return (
     <CartContext.Provider value={[cart, setCart]}>
       {children}
