@@ -17,7 +17,8 @@ function Header() {
       user: null,
       token: "",
     });
-    localStorage.removeItem("auth");
+    localStorage.clear();
+   window.location.reload();
     toast.success("Logout Successfully");
   };
   return (

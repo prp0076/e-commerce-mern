@@ -106,6 +106,28 @@ const HomePage = () => {
       console.log(error);
     }
   };
+
+
+  //add to cart
+  const addToCart = (product) => {
+    const updatedCart = [...cart];
+    const existingProduct = updatedCart.find(item => item._id === product._id);
+  
+    if (existingProduct) {
+      // If the product already exists in the cart, increase the quantity
+      existingProduct.customQuantity += 1; // Use a different property name for quantity
+    } else {
+      // If the product doesn't exist in the cart, add it with quantity 1
+      updatedCart.push({ ...product, customQuantity: 1 }); // Use a different property name for quantity
+    }
+  
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    toast.success("Item Added to cart");
+  };
+  
+  
+  
   return (
     <Layout title={"Welcome to Ecommerce - Best offers "}>
       {/* banner image */}
@@ -182,12 +204,7 @@ const HomePage = () => {
                     <button
                       className="btn btn-dark ms-1"
                       onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success("Item Added to cart");
+                        addToCart(p)
                       }}
                     >
                       ADD TO CART

@@ -76,6 +76,31 @@ const CartPage = () => {
       setLoading(false);
     }
   };
+  //handle quanityt
+  const increaseCustomQuantity = (product) => {
+    const updatedCart = cart.map((item) => {
+      if (item._id === product._id) {
+        return { ...item, customQuantity: item.customQuantity + 1 };
+      }
+      return item;
+    });
+  
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+  
+  const decreaseCustomQuantity = (product) => {
+    const updatedCart = cart.map((item) => {
+      if (item._id === product._id && item.customQuantity > 1) {
+        return { ...item, customQuantity: item.customQuantity - 1 };
+      }
+      return item;
+    });
+  
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+  
   return (
     <Layout>
       <div className=" cart-page">
@@ -109,11 +134,21 @@ const CartPage = () => {
                       height={"130px"}
                     />
                   </div>
-                  <div className="col-md-4">
-                    <p>{p.name.substring(0,10)}...</p>
-                    <p>{p.description.substring(0, 20)}...</p>
-                    <p>Price : {p.price}</p>
+                  <div className="col-md-5">
+                    <p>{p.name}</p>
+                    <p>{p.description.substring(0, 30)}</p>
+                    <p>Price: {p.price * p.customQuantity}</p>
+                    <div>
+                      <button onClick={() => increaseCustomQuantity(p)}>
+                        +
+                      </button>
+                      <p>Quantity: {p.customQuantity}</p>
+                      <button onClick={() => decreaseCustomQuantity(p)}>
+                        -
+                      </button>
+                    </div>
                   </div>
+
                   <div className="col-md-4 cart-remove-btn">
                     <button
                       className="btn btn-danger"
